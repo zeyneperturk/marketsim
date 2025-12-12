@@ -10,9 +10,10 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = Constants.USERTABLE)
 class User(
     @PrimaryKey(autoGenerate = true)
-    var uid: Int = 0,
-    var username: String,
-    var firstName: String,
-    var lastName: String
+    val uid: Int = 0,
+    val username: String,
+    val firstName: String,
+    val lastName: String,
+    val iconUrl: String
 ): Parcelable {
 }

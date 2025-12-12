@@ -6,7 +6,7 @@ import com.ctis487.marketsim.model.Cart
 import com.ctis487.marketsim.model.Product
 import com.ctis487.marketsim.model.User
 
-@Database(entities = [Product::class, User::class, Cart::class], version = 1)
+@Database(entities = [Product::class, User::class, Cart::class], version = 4)
 abstract class MarketRoomDatabase : RoomDatabase() {
     abstract fun ProductDAO(): ProductDAO
     abstract fun UserDAO(): UserDAO

@@ -2,19 +2,17 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
-    id("kotlin-kapt")
+    id("kotlin-kapt") // Keep kapt
 }
 
 android {
     namespace = "com.ctis487.marketsim"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 35 // CHANGED: Use stable integer, not "release(36)"
 
     defaultConfig {
         applicationId = "com.ctis487.marketsim"
-        minSdk = 34
-        targetSdk = 36
+        minSdk = 26      // Standard minSdk
+        targetSdk = 35   // CHANGED: Match compileSdk
         versionCode = 1
         versionName = "1.0"
 
@@ -30,16 +28,19 @@ android {
             )
         }
     }
+
+    // CRITICAL FIX: Update to Java 17 (Required for Room 2.6+)
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 
     buildFeatures{
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -49,14 +50,14 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.room.common.jvm)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    val room_version = "2.6.0"
+    val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
-    kapt ("androidx.room:room-compiler:$room_version")
+
+    // CRITICAL FIX: Use ONLY kapt. Remove "annotationProcessor".
+    kapt("androidx.room:room-compiler:$room_version")
 }
