@@ -1,9 +1,11 @@
 package com.ctis487.marketsim
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -15,6 +17,7 @@ import com.ctis487.marketsim.model.User
 class ProfileActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityProfileBinding
+    private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +26,7 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var user = prepUserForTesting()
+        user = prepUserForTesting()
         binding.userProfileView.setUser(user)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -35,9 +38,20 @@ class ProfileActivity : AppCompatActivity() {
         binding.userProfileView.setOnProfileEditListener(object: UserProfileView.OnProfileEditListener{
             override fun onEditClicked(view: View) {
                 val intent = Intent(this@ProfileActivity, ProfileUpdateActivity::class.java)
-                startActivity(intent)
+                intent.putExtra("user", user)
+                resultLauncher.launch(intent)
             }
         })
+    }
+
+    private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            result ->
+        if(result.resultCode == RESULT_OK){
+            val res = result.data
+            val updatedUser = res?.getParcelableExtra<User>("user")!!
+            user = updatedUser
+            binding.userProfileView.setUser(user)
+        }
     }
 
     private fun prepUserForTesting(): User {
