@@ -26,7 +26,11 @@ abstract class MarketRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     MarketRoomDatabase::class.java,
                     Constants.DATABASE
-                ).build()
+                )
+                    .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
+                    .build()
+
                 INSTANCE = instance
                 instance
             }

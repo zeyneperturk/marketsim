@@ -16,15 +16,13 @@
         android:padding="16dp"
         tools:context=".ProfileUpdateActivity">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgProfileUpdate"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="32dp"
-            android:src="@drawable/ic_user_placeholder"
-            android:background="@drawable/bg_circle"
             android:scaleType="centerCrop"
-            android:contentDescription="Profile Picture"
+            android:src="@drawable/ic_user_placeholder"
+            app:shapeAppearanceOverlay="@style/CircleImage"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

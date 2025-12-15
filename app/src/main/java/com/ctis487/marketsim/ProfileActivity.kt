@@ -17,6 +17,8 @@ import com.ctis487.lab.myapplication.LocaleHelper
 import com.ctis487.marketsim.custom.UserProfileView
 import com.ctis487.marketsim.databinding.ActivityMainBinding
 import com.ctis487.marketsim.databinding.ActivityProfileBinding
+import com.ctis487.marketsim.db.MarketRoomDatabase
+import com.ctis487.marketsim.db.UserDAO
 import com.ctis487.marketsim.model.User
 
 class ProfileActivity : AppCompatActivity() {
@@ -25,8 +27,9 @@ class ProfileActivity : AppCompatActivity() {
         super.attachBaseContext(LocaleHelper.setLocale(newBase, LocaleHelper.getLanguage(newBase)))
     }
 
+    lateinit var user: User
+    lateinit var userDao: UserDAO
     lateinit var binding: ActivityProfileBinding
-    private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +38,11 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        user = prepUserForTesting()
-        binding.userProfileView.setUser(user)
+        val db = MarketRoomDatabase.getDatabase(this)
+        userDao = db.UserDAO()
+        var user = userDao.getById(1)
+
+        binding.userProfileView.setUser(user!!)
 
         val spinnerItems = resources.getStringArray(R.array.langSpinner)
         val adapter = ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, spinnerItems)
@@ -98,7 +104,8 @@ class ProfileActivity : AppCompatActivity() {
             val res = result.data
             val updatedUser = res?.getParcelableExtra<User>("user")!!
             user = updatedUser
-            binding.userProfileView.setUser(user)
+            binding.userProfileView.setUser(user!!)
+            userDao.insert(updatedUser)
         }
     }
 
