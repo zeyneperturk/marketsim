@@ -41,8 +41,10 @@ class ProfileActivity : AppCompatActivity() {
         val db = MarketRoomDatabase.getDatabase(this)
         userDao = db.UserDAO()
         var user = userDao.getById(1)
-
-        binding.userProfileView.setUser(user!!)
+        if(user == null){
+            user = prepUserForTesting()
+        }
+        binding.userProfileView.setUser(user)
 
         val spinnerItems = resources.getStringArray(R.array.langSpinner)
         val adapter = ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, spinnerItems)
