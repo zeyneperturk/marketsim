@@ -2,17 +2,17 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
-    id("kotlin-kapt") // Keep kapt
+    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.ctis487.marketsim"
-    compileSdk = 35 // CHANGED: Use stable integer, not "release(36)"
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.ctis487.marketsim"
-        minSdk = 26      // Standard minSdk
-        targetSdk = 35   // CHANGED: Match compileSdk
+        minSdk = 26
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -29,7 +29,6 @@ android {
         }
     }
 
-    // CRITICAL FIX: Update to Java 17 (Required for Room 2.6+)
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -58,7 +57,14 @@ dependencies {
     val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
-
-    // CRITICAL FIX: Use ONLY kapt. Remove "annotationProcessor".
     kapt("androidx.room:room-compiler:$room_version")
+
+    //Picasso library to get images from server with https protocol
+    implementation ( "com.squareup.picasso:picasso:2.8")
+
+    //STEP1: Include retrofit and converter
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+
+    // Gson Converter
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 }

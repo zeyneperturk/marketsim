@@ -5,4 +5,5 @@ object Constants {
     const val CARTTABLE = "Carts"
     const val PRODUCTTABLE = "Products"
     const val DATABASE = "MarketDB"
+    const val baseUrl = "http://localhost:8080/products"
 }
