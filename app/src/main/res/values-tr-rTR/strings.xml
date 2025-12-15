@@ -2,8 +2,8 @@
     <string name="app_name">MarketSim</string>
 
     <string-array name="langSpinner">
-        <item>🇺🇸 english</item>
-        <item>🇹🇷 turkish</item>
+        <item>🇺🇸 ingilizce</item>
+        <item>🇹🇷 türkçe</item>
     </string-array>
 
 </resources>

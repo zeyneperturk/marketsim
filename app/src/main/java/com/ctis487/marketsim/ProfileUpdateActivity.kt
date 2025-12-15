@@ -1,5 +1,6 @@
 package com.ctis487.marketsim
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.ctis487.marketsim.databinding.ActivityProfileUpdateBinding
 import com.ctis487.marketsim.model.User
 import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
+import com.ctis487.lab.myapplication.LocaleHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,6 +24,10 @@ import java.io.File
 import java.io.FileOutputStream
 
 class ProfileUpdateActivity : AppCompatActivity() {
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleHelper.setLocale(newBase, LocaleHelper.getLanguage(newBase)))
+    }
 
     lateinit var binding: ActivityProfileUpdateBinding
     private var currentUser: User? = null
@@ -61,12 +67,12 @@ class ProfileUpdateActivity : AppCompatActivity() {
     }
 
     private fun launchPhotoPicker() {
-        // Launches the modern Android Photo Picker
+
         pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
 
     private fun validateInputs(): Boolean {
-        // (Same validation logic as before)
+
         if (binding.etUsername.text.isNullOrBlank()) {
             binding.tilUsername.error = "Required"
             return false
@@ -77,7 +83,7 @@ class ProfileUpdateActivity : AppCompatActivity() {
     private val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         if (uri != null) {
             newImageUri = uri
-            // Show the selected image immediately in the UI
+
             binding.imgProfileUpdate.setImageURI(uri)
         } else {
             Log.d("PhotoPicker", "No media selected")
@@ -85,16 +91,14 @@ class ProfileUpdateActivity : AppCompatActivity() {
     }
 
     private fun sendBackResult() {
-        // Use coroutine just for file I/O (saving image)
+
         lifecycleScope.launch(Dispatchers.IO) {
             var finalIconUrl = currentUser?.iconUrl ?: ""
 
-            // Save image locally if a new one was picked
             if (newImageUri != null) {
                 finalIconUrl = saveImageToInternalStorage(newImageUri!!)
             }
 
-            // Create updated User object
             val updatedUser = User(
                 uid = currentUser!!.uid,
                 username = binding.etUsername.text.toString(),
@@ -103,7 +107,6 @@ class ProfileUpdateActivity : AppCompatActivity() {
                 iconUrl = finalIconUrl
             )
 
-            // Switch back to Main Thread to finish activity
             withContext(Dispatchers.Main) {
                 val resultIntent = Intent()
                 resultIntent.putExtra("user", updatedUser)

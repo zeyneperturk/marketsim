@@ -1,14 +1,20 @@
 package com.ctis487.marketsim
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.ctis487.lab.myapplication.LocaleHelper
 import com.ctis487.marketsim.databinding.ActivityMainBinding
 import com.ctis487.marketsim.databinding.ActivityProductDetailsBinding
 
 class ProductDetailsActivity : AppCompatActivity() {
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleHelper.setLocale(newBase, LocaleHelper.getLanguage(newBase)))
+    }
 
     lateinit var binding: ActivityProductDetailsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
