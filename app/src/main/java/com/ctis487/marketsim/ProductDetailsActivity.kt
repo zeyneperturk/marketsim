@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.ctis487.lab.myapplication.LocaleHelper
-import com.ctis487.marketsim.databinding.ActivityMainBinding
 import com.ctis487.marketsim.databinding.ActivityProductDetailsBinding
+import com.ctis487.marketsim.model.Product
 
 class ProductDetailsActivity : AppCompatActivity() {
 
@@ -23,6 +23,12 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         binding = ActivityProductDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val product = intent.getParcelableExtra<Product>("product")
+        if (product != null) {
+            // Product data is available, you can use it to populate the UI
+            // Example: binding.productName.text = product.name
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
