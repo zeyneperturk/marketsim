@@ -8,15 +8,62 @@
     android:orientation="vertical"
     tools:context=".MainActivity" >
 
-    <Button
-        android:id="@+id/button"
+    <EditText
+        android:id="@+id/searchProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/search"
+        android:inputType="text"
+        android:paddingStart="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/rose_soft" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recylerMed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonCart"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cartButton"
+            android:textColor="@color/blue_pastel" />
+
+        <Button
+            android:id="@+id/buttonProfile"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/profileButton"
+            android:textColor="@color/blue_pastel" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_game"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="GAME" />
+        android:layout_height="188dp"
+        android:text="Emirin muhtesem oyunu" />
+
 </LinearLayout>

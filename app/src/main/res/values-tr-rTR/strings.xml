@@ -6,4 +6,8 @@
         <item>🇹🇷 türkçe</item>
     </string-array>
 
+    <string name="profileButton">Profile Git</string>
+    <string name="cartButton">Sepete Git</string>
+    <string name="search">Ara</string>
+    <string name="productName">Ürün İsmi</string>
 </resources>

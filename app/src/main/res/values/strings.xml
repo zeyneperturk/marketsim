@@ -6,4 +6,9 @@
         <item>🇹🇷 turkish</item>
     </string-array>
 
+    <string name="profileButton">Go to PROFILE</string>
+    <string name="cartButton">Go to Cart</string>
+    <string name="search">Search</string>
+    <string name="productName">Product Name</string>
+
 </resources>
