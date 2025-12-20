@@ -74,6 +74,17 @@ class GameEngine() {
                 canvas.drawText("Tap to Restart", 80f, 200f, textPaint)
                 canvas.drawText("Score: $score", 80f, 280f, textPaint)
             }
+
+            GameState.PAUSED -> {
+
+                pipeManager.draw(canvas)
+                bird.draw(canvas)
+
+                canvas.drawText("PAUSED", 80f, 120f, textPaint)
+                canvas.drawText("Tap again to resume", 80f, 200f, textPaint)
+                canvas.drawText("Score: $score", 80f, 280f, textPaint)
+
+            }
         }
     }
 
@@ -85,8 +96,10 @@ class GameEngine() {
             }
             GameState.PLAYING -> bird.flap()
             GameState.GAME_OVER -> restart()
+            GameState.PAUSED -> state = GameState.PLAYING
+            }
         }
-    }
+
 
     private fun restart() {
         score = 0
@@ -115,6 +128,14 @@ class GameEngine() {
                 p.passed = true
                 score++
             }
+        }
+    }
+
+    fun togglePause() {
+        state = when (state) {
+            GameState.PLAYING -> GameState.PAUSED
+            GameState.PAUSED -> GameState.PLAYING
+            else -> state
         }
     }
 }

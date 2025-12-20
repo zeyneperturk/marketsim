@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.AttributeSet
+import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
@@ -55,17 +56,28 @@ class GameView @JvmOverloads constructor(
     }
 
     private fun initView() {
-        // SurfaceHolder callback'lerini dinlemeye başla
+
         holder.addCallback(this)
         isFocusable = true
 
     }
 
+    private val gestureDetector = GestureDetector(context,
+        object : GestureDetector.SimpleOnGestureListener() {
+            override fun onLongPress(e: MotionEvent) {
+                GameConstants.gameEngine?.togglePause()
+            }
+        }
+    )
+
     override fun onTouchEvent(event: MotionEvent): Boolean {
+
+        gestureDetector.onTouchEvent(event)
+
         if (event.action == MotionEvent.ACTION_DOWN) {
 
             tapPlayer?.apply {
-                seekTo(0)          // başa sar
+                seekTo(0)
                 playWhenReady = true
                 play()
             }

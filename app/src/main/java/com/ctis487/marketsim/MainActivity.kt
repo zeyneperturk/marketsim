@@ -54,6 +54,9 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
         binding.recylerMed.layoutManager = LinearLayoutManager(this)
         binding.recylerMed.adapter = adapter
 
+        val intent = Intent(this, GameActivity::class.java)
+        startActivity(intent)
+
         productService = ApiClient.getClient().create(ProductService::class.java)
         var request = productService.getProduct()
 
@@ -112,10 +115,9 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
             insets
         }
 
-        binding.btnGame.setOnClickListener {
-            val intent = Intent(this, GameActivity::class.java)
-            startActivity(intent)
-        }
+
+
+
     }
 
     override fun displayItem(product: Product) {
