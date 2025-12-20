@@ -68,4 +68,7 @@ dependencies {
 
     // Gson Converter
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // External library for sound
+    implementation("androidx.media3:media3-exoplayer:1.2.1")
 }

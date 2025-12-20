@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ctis487.lab.myapplication.LocaleHelper
 import com.ctis487.marketsim.databinding.ActivityMainBinding
+import com.ctis487.marketsim.model.User
+import com.ctis487.marketsim.model.game.GameConstants
 import com.ctis487.marketsim.adapter.ProductAdapter
 import com.ctis487.marketsim.db.CartDAO
 import com.ctis487.marketsim.db.CartViewModel
@@ -44,6 +46,7 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        GameConstants.initalization(applicationContext)
 
         cartViewModel=ViewModelProvider(this).get(CartViewModel::class.java)
 
@@ -107,6 +110,11 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        binding.btnGame.setOnClickListener {
+            val intent = Intent(this, GameActivity::class.java)
+            startActivity(intent)
         }
     }
 
