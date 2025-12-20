@@ -23,7 +23,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recylerMed"
         android:layout_width="match_parent"
-        android:layout_height="700dp"
+        android:layout_height="670dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
@@ -62,8 +62,11 @@
 
     <Button
         android:id="@+id/btn_game"
-        android:layout_width="match_parent"
-        android:layout_height="188dp"
-        android:text="Emirin muhtesem oyunu" />
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Emirin muhtesem oyunu"
+        android:textColor="@color/rose_soft" />
 
 </LinearLayout>
