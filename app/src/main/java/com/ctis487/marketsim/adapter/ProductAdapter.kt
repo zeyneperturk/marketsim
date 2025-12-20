@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.ctis487.marketsim.Constants
+import com.ctis487.marketsim.util.Constants
 import com.ctis487.marketsim.model.Product
 import com.ctis487.marketsim.R
 import com.ctis487.marketsim.db.CartViewModel
