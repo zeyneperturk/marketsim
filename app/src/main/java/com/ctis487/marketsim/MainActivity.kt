@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        GameConstants.initalization(applicationContext)
 
         binding.button.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
