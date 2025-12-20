@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.ctis487.lab.myapplication.LocaleHelper
 import com.ctis487.marketsim.databinding.ActivityMainBinding
 import com.ctis487.marketsim.model.User
+import com.ctis487.marketsim.model.game.GameConstants
 
 class MainActivity : AppCompatActivity() {
 
