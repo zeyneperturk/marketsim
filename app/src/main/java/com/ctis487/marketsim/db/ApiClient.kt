@@ -1,5 +1,6 @@
 package com.ctis487.marketsim.db
 
+import com.ctis487.marketsim.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -9,7 +10,7 @@ object ApiClient {
     fun getClient(): Retrofit {
         if (retrofit == null)
             retrofit = Retrofit.Builder()
-                .baseUrl("http://56.228.81.131:8080/")
+                .baseUrl(Constants.BASEURL)
                 .addConverterFactory(GsonConverterFactory.create())
                 //retrofit will understand as a converter GSON converter will be used
                 .build()
