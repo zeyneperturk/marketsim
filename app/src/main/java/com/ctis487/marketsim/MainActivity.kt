@@ -54,8 +54,7 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
         binding.recylerMed.layoutManager = LinearLayoutManager(this)
         binding.recylerMed.adapter = adapter
 
-        val intent = Intent(this, GameActivity::class.java)
-        startActivity(intent)
+
 
         productService = ApiClient.getClient().create(ProductService::class.java)
         var request = productService.getProduct()
@@ -107,7 +106,10 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
             startActivity(intent)
         }
 
-
+        binding.btnGame.setOnClickListener {
+            val intent = Intent(this, GameActivity::class.java)
+            startActivity(intent)
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
