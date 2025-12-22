@@ -34,6 +34,11 @@ class SearchActivity : AppCompatActivity(),
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Setup back button
+        binding.buttonBack.setNavigationOnClickListener {
+            finish()
+        }
+
         productList =
             intent.getParcelableArrayListExtra("productList") ?: arrayListOf()
 

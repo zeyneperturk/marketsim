@@ -136,8 +136,6 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
         }
 
 
-
-
     }
 
     override fun displayItem(product: Product) {
@@ -148,5 +146,6 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
 
     override fun addCart(product: Product) {
         cartViewModel.addToCart(product)
+        Toast.makeText(this, "${product.name} added to cart", Toast.LENGTH_SHORT).show()
     }
 }

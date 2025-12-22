@@ -11,6 +11,9 @@
     <string name="search">Search</string>
     <string name="productName">Product Name</string>
     <string name="addCartBtn">Add to Cart</string>
+    <string name="cart">Cart</string>
+    <string name="orderTotal">Order Total: </string>
+    <string name="useCoupon">Use Coupon</string>
 
     <string name="un">Username</string>
     <string name="fn">First Name</string>

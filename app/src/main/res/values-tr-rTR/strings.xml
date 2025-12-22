@@ -11,6 +11,9 @@
     <string name="search">Ara</string>
     <string name="productName">Ürün İsmi</string>
     <string name="addCartBtn">Sepete Ekle</string>
+    <string name="cart">Sepet</string>
+    <string name="orderTotal">Sepet Tutarı: </string>
+    <string name="useCoupon">Kupon Kullan</string>
 
     <string name="un">Kullanıcı Adı</string>
     <string name="fn">İsim</string>

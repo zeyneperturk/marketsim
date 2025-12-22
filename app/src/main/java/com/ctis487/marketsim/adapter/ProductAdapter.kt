@@ -20,8 +20,6 @@ class ProductAdapter(
 
     private var recyclerItemValues = emptyList<Product>()
 
-
-
     fun setData(items:List<Product>){
         recyclerItemValues = items
         notifyDataSetChanged()
@@ -74,7 +72,12 @@ class ProductAdapter(
         }
 
         holder.btnCart.setOnClickListener {
-            cartViewModel?.addToCart(item) ?: recyclerAdapterInterface.addCart(item)
+            if (cartViewModel != null) {
+                cartViewModel.addToCart(item)
+                android.widget.Toast.makeText(context, "${item.name} added to cart", android.widget.Toast.LENGTH_SHORT).show()
+            } else {
+                recyclerAdapterInterface.addCart(item)
+            }
         }
 
     }

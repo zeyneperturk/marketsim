@@ -5,28 +5,46 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_alignParentBottom="false"
+    android:layout_marginTop="-5dp"
     android:orientation="vertical"
     tools:context=".SearchActivity">
 
-    <EditText
-        android:id="@+id/searchProduct"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:ems="10"
-        android:hint="@string/search"
-        android:imeOptions="actionSearch"
-        android:inputType="text"
-        android:paddingStart="10dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/rose_soft" />
+        android:orientation="horizontal">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/button_back"
+            android:layout_width="37dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:buttonGravity="bottom"
+            app:navigationIcon="?attr/homeAsUpIndicator" />
+
+        <EditText
+            android:id="@+id/searchProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:hint="@string/search"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/rose_soft" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerSearch"
         android:layout_width="388dp"
-        android:layout_height="540dp" />
+        android:layout_height="540dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </LinearLayout>

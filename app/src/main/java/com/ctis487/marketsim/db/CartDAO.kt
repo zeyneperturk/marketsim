@@ -15,6 +15,9 @@ interface CartDAO {
     @Query("SELECT * FROM ${Constants.CARTTABLE} WHERE userid = :userId")
     fun getCart(userId: Int): List<Cart>
 
+    @Query("SELECT * FROM ${Constants.CARTTABLE} WHERE userid = :userId AND pid = :pid")
+    fun getCartItem(userId: Int, pid: Int): Cart?
+
     @Query("DELETE FROM ${Constants.CARTTABLE} WHERE userid = :userId AND pid = :pid")
     fun remove(userId: Int, pid: Int): Int
 
