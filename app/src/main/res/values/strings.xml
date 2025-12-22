@@ -6,10 +6,21 @@
         <item>🇹🇷 turkish</item>
     </string-array>
 
-    <string name="profileButton">Go to PROFILE</string>
+    <string name="profileButton">Go to Profile</string>
     <string name="cartButton">Go to Cart</string>
     <string name="search">Search</string>
     <string name="productName">Product Name</string>
     <string name="addCartBtn">Add to Cart</string>
+
+    <string name="un">Username</string>
+    <string name="fn">First Name</string>
+    <string name="ln">Last Name</string>
+    <string name="updateProfileBtn">Update Profile</string>
+    <string name="updateCancelBtn">Cancel</string>
+
+    <string name="lblLang">Language</string>
+    <string name="lblProfile">Profile</string>
+    <string name="changePhoto">Change Photo</string>
+    <string name="coupon">Coupons</string>
 
 </resources>

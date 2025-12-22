@@ -13,10 +13,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ctis487.lab.myapplication.LocaleHelper
+import com.ctis487.marketsim.adapter.CouponAdapter
 import com.ctis487.marketsim.custom.UserProfileView
 import com.ctis487.marketsim.databinding.ActivityMainBinding
 import com.ctis487.marketsim.databinding.ActivityProfileBinding
+import com.ctis487.marketsim.db.CouponDAO
 import com.ctis487.marketsim.db.MarketRoomDatabase
 import com.ctis487.marketsim.db.UserDAO
 import com.ctis487.marketsim.model.User
@@ -30,6 +34,8 @@ class ProfileActivity : AppCompatActivity() {
     lateinit var user: User
     lateinit var userDao: UserDAO
     lateinit var binding: ActivityProfileBinding
+    private lateinit var adapter: CouponAdapter
+    private lateinit var couponDao: CouponDAO
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +53,19 @@ class ProfileActivity : AppCompatActivity() {
         binding.userProfileView.setUser(user)
 
         val spinnerItems = resources.getStringArray(R.array.langSpinner)
-        val adapter = ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, spinnerItems)
-        binding.spinnerLang.adapter = adapter
+        val adapterLang = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
+        binding.spinnerLang.adapter = adapterLang
+
+        couponDao = db.CouponDAO()
+        adapter = CouponAdapter()
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerCoupons)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
+
+
+        couponDao.getAllCoupons().observe(this) { coupons ->
+            adapter.submitList(coupons)
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -91,8 +108,6 @@ class ProfileActivity : AppCompatActivity() {
                 if (selectedLanguage == prev) return
 
                 val newContext = LocaleHelper.setLocale(this@ProfileActivity, selectedLanguage)
-                //Toast.makeText(newContext, newContext.getString(R.string.toastLangChange), Toast.LENGTH_SHORT).show()
-
                 recreate()
             }
 
@@ -128,6 +143,5 @@ class ProfileActivity : AppCompatActivity() {
         finish()
         return true
     }
-
 
 }

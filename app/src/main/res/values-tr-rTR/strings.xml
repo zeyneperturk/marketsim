@@ -12,4 +12,15 @@
     <string name="productName">Ürün İsmi</string>
     <string name="addCartBtn">Sepete Ekle</string>
 
+    <string name="un">Kullanıcı Adı</string>
+    <string name="fn">İsim</string>
+    <string name="ln">Soyisim</string>
+    <string name="updateProfileBtn">Profili Güncelle</string>
+    <string name="updateCancelBtn">İptal</string>
+
+    <string name="lblLang">Dil</string>
+    <string name="lblProfile">Profil</string>
+    <string name="changePhoto">Fotoğrafı değiştir</string>
+    <string name="coupon">Kuponlar</string>
+
 </resources>
