@@ -9,6 +9,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.ctis487.lab.myapplication.LocaleHelper
 import com.ctis487.marketsim.databinding.ActivityProductDetailsBinding
 import com.ctis487.marketsim.model.Product
+import com.ctis487.marketsim.util.Constants
+import com.bumptech.glide.Glide
 
 class ProductDetailsActivity : AppCompatActivity() {
 
@@ -23,11 +25,22 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         binding = ActivityProductDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val product = intent.getParcelableExtra<Product>("product")
         if (product != null) {
-            // Product data is available, you can use it to populate the UI
-            // Example: binding.productName.text = product.name
+
+            binding.tvGtItemProductName.text = product.name
+            binding.tvGtItemProductPrice.text = product.price.toString()
+            binding.tvGtItemProductDescription.text = product.description
+
+            val imgUrlAddress = Constants.baseUrlForImage + product.img
+
+            Glide.with(this)
+                .load(imgUrlAddress)
+                .override(600)
+                .into(binding.imageView)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -35,5 +48,10 @@ class ProductDetailsActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

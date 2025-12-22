@@ -7,4 +7,114 @@
     android:layout_height="match_parent"
     tools:context=".ProductDetailsActivity">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:title="  "
+        app:titleCentered="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="150dp"
+        android:layout_height="66dp"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.875">
+
+        <Button
+            android:id="@+id/addCartBtn"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:text="@string/addCartBtn"
+            android:textColor="@color/blue_pastel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="@android:color/transparent"
+            android:background="@null"
+            android:clickable="false"
+            android:focusable="false"/>
+
+        <ImageView
+            android:id="@+id/imgCart4"
+            android:layout_width="30dp"
+            android:layout_height="29dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="@+id/addCartBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.991"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/addCartBtn"
+            app:layout_constraintVertical_bias="0.521"
+            app:srcCompat="@drawable/shopping_cart" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="336dp"
+        android:layout_height="208dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.591">
+
+        <TextView
+            android:id="@+id/tvGtItemProductName"
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/productName"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvGtItemProductPrice"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_horizontal"
+            android:text="Price"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvGtItemProductDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Product Detail"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="262dp"
+        android:layout_height="231dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.102" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

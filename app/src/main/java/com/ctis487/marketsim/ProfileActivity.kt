@@ -98,6 +98,10 @@ class ProfileActivity : AppCompatActivity() {
 
             override fun onNothingSelected(parent: AdapterView<*>) { }
         }
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
     }
 
     private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -120,4 +124,10 @@ class ProfileActivity : AppCompatActivity() {
             iconUrl = ""
         )
     }
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
+
 }

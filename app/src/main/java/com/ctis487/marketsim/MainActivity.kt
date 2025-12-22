@@ -1,9 +1,11 @@
 package com.ctis487.marketsim
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
 
     private lateinit var cartDAO: CartDAO
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -53,6 +56,21 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
         adapter = ProductAdapter(this, cartViewModel)
         binding.recylerMed.layoutManager = LinearLayoutManager(this)
         binding.recylerMed.adapter = adapter
+
+        binding.searchProduct.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+
+                binding.searchProduct.performClick()
+                val intent = Intent(this, SearchActivity::class.java)
+                intent.putParcelableArrayListExtra(
+                    "productList",
+                    ArrayList(productList)
+                )
+                startActivity(intent)
+            }
+            true
+        }
+
 
 
 

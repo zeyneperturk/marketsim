@@ -15,15 +15,23 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/search"
-        android:inputType="text"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:longClickable="false"
+        android:clickable="true"
+        android:inputType="none"
+        android:cursorVisible="false"
         android:paddingStart="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/rose_soft" />
 
+
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recylerMed"
-        android:layout_width="match_parent"
-        android:layout_height="670dp"
+        android:layout_width="388dp"
+        android:layout_height="540dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
@@ -34,7 +42,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         app:layout_constraintVertical_bias="0.0" />
-
 
     <LinearLayout
         android:layout_width="match_parent"

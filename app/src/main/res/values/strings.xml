@@ -10,5 +10,6 @@
     <string name="cartButton">Go to Cart</string>
     <string name="search">Search</string>
     <string name="productName">Product Name</string>
+    <string name="addCartBtn">Add to Cart</string>
 
 </resources>
