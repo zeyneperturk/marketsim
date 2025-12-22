@@ -1,15 +1,24 @@
 package com.ctis487.marketsim
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.OptIn
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.media3.common.MediaItem
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.datasource.RawResourceDataSource
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
+import com.ctis487.marketsim.model.game.GameConstants
 import com.ctis487.marketsim.model.game.GameView
+import com.ctis487.marketsim.worker.CouponWorker
 
 class GameActivity : AppCompatActivity() {
 
@@ -49,8 +58,17 @@ class GameActivity : AppCompatActivity() {
         tapPlayer.setMediaItem(tapItem)
         tapPlayer.prepare()
 
-        // GameView'e tapPlayer veriyoruz
         gameView.setTapPlayer(tapPlayer)
+
+        //Generating coupons
+        GameConstants.gameEngine?.onGameOver = { score ->
+            startCouponWorker(score)
+            if (score > 10) {
+                runOnUiThread {
+                    showCouponDialog()
+                }
+            }
+        }
     }
 
     override fun onPause() {
@@ -68,5 +86,37 @@ class GameActivity : AppCompatActivity() {
         super.onResume()
         bgPlayer.playWhenReady = true
         bgPlayer.play()
+    }
+
+    //coupon related
+    private fun startCouponWorker(score: Int) {
+        val data = workDataOf("score" to score)
+
+        val request = OneTimeWorkRequestBuilder<CouponWorker>()
+            .setInputData(data)
+            .build()
+
+        WorkManager.getInstance(this).enqueueUniqueWork(
+            "coupon_worker_once",
+            ExistingWorkPolicy.KEEP,
+            request
+        )
+    }
+
+    private fun showCouponDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_coupon, null)
+
+        val btnOk = dialogView.findViewById<Button>(R.id.btnOk)
+
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setCancelable(false)
+            .create()
+
+        btnOk.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 }

@@ -4,10 +4,14 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
+import com.ctis487.marketsim.adapter.CouponAdapter
 
 class GameEngine() {
     var backgroundImage: BackgroundImage = BackgroundImage()
     var bird: Bird = Bird()
+
+    var onGameOver: ((Int) -> Unit)? = null
+    private var gameOverFired = false
 
 
     private val pipeWidth = (GameConstants.screenWidth * 0.30f).toInt() // 0.18 -> 0.26 dene
@@ -60,6 +64,11 @@ class GameEngine() {
 
                 if (checkCollision()) {
                     state = GameState.GAME_OVER
+                    if (!gameOverFired) {
+                        gameOverFired = true
+                        onGameOver?.invoke(score)
+                    }
+
                 } else {
                     updateScore()
                 }
@@ -104,6 +113,7 @@ class GameEngine() {
     private fun restart() {
         score = 0
         state = GameState.READY
+        gameOverFired = false
         pipeManager.reset()
 
         bird.x = GameConstants.screenWidth / 4
