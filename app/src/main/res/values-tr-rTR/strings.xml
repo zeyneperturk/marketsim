@@ -28,5 +28,6 @@
     <string name="lblProfile">Profil</string>
     <string name="changePhoto">Fotoğrafı değiştir</string>
     <string name="coupon">Kuponlar</string>
+    <string name="btn_game">Emir\'in Muhteşem Oyunu</string>
 
 </resources>

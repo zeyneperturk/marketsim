@@ -80,31 +80,7 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
                 Toast.makeText(applicationContext, t.message.toString(), Toast.LENGTH_LONG).show()
             }
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
-            /*
-                    if (!response.isSuccessful) {
-                        Toast.makeText(
-                            this@MainActivity,
-                            "HTTP Error: ${response.code()}",
-                            Toast.LENGTH_LONG
-                        ).show()
-                        return
-                    }
 
-                    val body = response.body()
-
-                    if (body.isNullOrEmpty()) {
-                        Toast.makeText(
-                            this@MainActivity,
-                            "Product list is empty or null",
-                            Toast.LENGTH_LONG
-                        ).show()
-                        return
-                    }
-
-
-                    //When response is taken from server that method will be called
-                Log.d("API_TEST", "First product = ${response.body()!![0].name}")
-                */
                 if (response.isSuccessful && response.body() != null) {
                     productList = response.body()!!.toMutableList()
                     adapter.setData(productList)

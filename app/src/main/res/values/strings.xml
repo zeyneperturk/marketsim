@@ -28,5 +28,6 @@
     <string name="lblProfile">Profile</string>
     <string name="changePhoto">Change Photo</string>
     <string name="coupon">Coupons</string>
+    <string name="btn_game">Emir\'s Magnificent Game</string>
 
 </resources>

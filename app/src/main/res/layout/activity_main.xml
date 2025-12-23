@@ -86,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Emirin muhtesem oyunu"
+        android:text="@string/btn_game"
         android:textColor="@color/rose_soft" />
     <View
         android:id="@+id/divider3"

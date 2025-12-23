@@ -70,15 +70,15 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="336dp"
-        android:layout_height="208dp"
+        android:layout_width="334dp"
+        android:layout_height="258dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.591">
+        app:layout_constraintVertical_bias="0.638">
 
         <TextView
             android:id="@+id/tvGtItemProductName"
@@ -86,7 +86,7 @@
             android:layout_height="67dp"
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/productName"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvGtItemProductPrice"
@@ -94,7 +94,7 @@
             android:layout_height="50dp"
             android:gravity="center_horizontal"
             android:text="Price"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvGtItemProductDescription"
@@ -102,7 +102,7 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
             android:text="Product Detail"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
