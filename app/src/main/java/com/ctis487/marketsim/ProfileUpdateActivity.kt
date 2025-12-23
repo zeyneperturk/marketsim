@@ -17,6 +17,7 @@ import com.ctis487.marketsim.model.User
 import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
 import com.ctis487.lab.myapplication.LocaleHelper
+import com.ctis487.marketsim.db.MarketRoomDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -41,7 +42,9 @@ class ProfileUpdateActivity : AppCompatActivity() {
         binding = ActivityProfileUpdateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        currentUser = intent.getParcelableExtra<User>("user")
+        val db = MarketRoomDatabase.getDatabase(applicationContext)
+        val userDao = db.UserDAO()
+        currentUser = userDao.getById(1)
         binding.user = currentUser
 
         if (!currentUser?.iconUrl.isNullOrEmpty()) {
@@ -73,10 +76,33 @@ class ProfileUpdateActivity : AppCompatActivity() {
 
     private fun validateInputs(): Boolean {
 
+        val nameRegex = Regex("^[a-zA-ZğüşöçıİĞÜŞÖÇ ]+$")
+
         if (binding.etUsername.text.isNullOrBlank()) {
             binding.tilUsername.error = "Required"
             return false
         }
+
+        val firstName = binding.etFirstName.text.toString()
+        if (firstName.isBlank()) {
+            binding.tilFirstName.error = "Required"
+            return false
+        }
+        if (!nameRegex.matches(firstName)) {
+            binding.tilFirstName.error = "Only letters allowed"
+            return false
+        }
+
+        val lastName = binding.etLastName.text.toString()
+        if (lastName.isBlank()) {
+            binding.tilLastName.error = "Required"
+            return false
+        }
+        if (!nameRegex.matches(lastName)) {
+            binding.tilLastName.error = "Only letters allowed"
+            return false
+        }
+
         return true
     }
 
