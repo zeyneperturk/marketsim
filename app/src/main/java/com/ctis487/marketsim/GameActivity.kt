@@ -1,5 +1,6 @@
 package com.ctis487.marketsim
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
@@ -16,6 +17,7 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
+import com.ctis487.lab.myapplication.LocaleHelper
 import com.ctis487.marketsim.model.game.GameConstants
 import com.ctis487.marketsim.model.game.GameView
 import com.ctis487.marketsim.worker.CouponWorker
@@ -39,7 +41,7 @@ class GameActivity : AppCompatActivity() {
 
         // BACKGROUND MUSIC
         bgPlayer = ExoPlayer.Builder(this)
-            .setHandleAudioBecomingNoisy(false)
+            .setHandleAudioBecomingNoisy(true)
             .build()
 
         val bgItem = MediaItem.fromUri(
@@ -119,4 +121,6 @@ class GameActivity : AppCompatActivity() {
 
         dialog.show()
     }
+
+
 }

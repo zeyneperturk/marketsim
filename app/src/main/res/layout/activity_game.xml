@@ -13,9 +13,9 @@
         android:id="@+id/btnBack"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_gravity="top|start"
         android:layout_margin="16dp"
         android:background="@android:color/transparent"
-        android:src="@android:drawable/ic_menu_revert"
         android:contentDescription="Back"
-        android:layout_gravity="top|start"/>
+        android:src="@android:drawable/ic_menu_revert" />
 </FrameLayout>

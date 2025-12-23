@@ -26,4 +26,13 @@
     <string name="changePhoto">Fotoğrafı değiştir</string>
     <string name="coupon">Kuponlar</string>
 
+    <string name="tap_to_start">Başlamak için dokun</string>
+    <string name="game_over">Oyun Bitti</string>
+    <string name="tap_to_restart">Tekrar başlamak için dokun</string>
+    <string name="paused">DURAKLATILDI</string>
+    <string name="tap_to_resume">Devam etmek için tekrar dokun</string>
+    <string name="score">Skor: </string>
+    <string name="gameDialogTitle">Tebrikler !</string>
+    <string name="gameDialogText">Kupon kazandın !</string>
+    <string name="gameDialogOK">Tamam</string>
 </resources>

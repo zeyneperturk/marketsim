@@ -1,12 +1,14 @@
 package com.ctis487.marketsim.model.game
 
+import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
+import com.ctis487.marketsim.R
 import com.ctis487.marketsim.adapter.CouponAdapter
 
-class GameEngine() {
+class GameEngine(private val context: Context) {
     var backgroundImage: BackgroundImage = BackgroundImage()
     var bird: Bird = Bird()
 
@@ -52,7 +54,7 @@ class GameEngine() {
         when (state) {
             GameState.READY -> {
                 bird.draw(canvas)
-                canvas.drawText("Tap to Start", 80f, 120f, textPaint)
+                canvas.drawText(context.getString(R.string.tap_to_start), 80f, 120f, textPaint)
             }
 
             GameState.PLAYING -> {
@@ -79,9 +81,9 @@ class GameEngine() {
             GameState.GAME_OVER -> {
                 pipeManager.draw(canvas)
                 bird.draw(canvas)
-                canvas.drawText("Game Over", 80f, 120f, textPaint)
-                canvas.drawText("Tap to Restart", 80f, 200f, textPaint)
-                canvas.drawText("Score: $score", 80f, 280f, textPaint)
+                canvas.drawText(context.getString(R.string.game_over), 80f, 120f, textPaint)
+                canvas.drawText(context.getString(R.string.tap_to_restart), 80f, 200f, textPaint)
+                canvas.drawText(context.getString(R.string.score) + score, 80f, 280f, textPaint)
             }
 
             GameState.PAUSED -> {
@@ -89,8 +91,8 @@ class GameEngine() {
                 pipeManager.draw(canvas)
                 bird.draw(canvas)
 
-                canvas.drawText("PAUSED", 80f, 120f, textPaint)
-                canvas.drawText("Tap again to resume", 80f, 200f, textPaint)
+                canvas.drawText(context.getString(R.string.paused), 80f, 120f, textPaint)
+                canvas.drawText(context.getString(R.string.tap_to_resume), 80f, 200f, textPaint)
                 canvas.drawText("Score: $score", 80f, 280f, textPaint)
 
             }
@@ -127,6 +129,11 @@ class GameEngine() {
                 return true
             }
         }
+
+        if (birdRect.bottom >= GameConstants.screenHeight) {
+            return true
+        }
+
         return false
     }
 

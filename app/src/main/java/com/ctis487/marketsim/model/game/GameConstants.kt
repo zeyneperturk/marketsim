@@ -16,7 +16,7 @@ class GameConstants {
 
             setScreenSize(context)
             bitmapBank = BitmapBank(context.resources)
-            gameEngine = GameEngine()
+            gameEngine = GameEngine(context)
         }
 
          fun setScreenSize(context: Context) {

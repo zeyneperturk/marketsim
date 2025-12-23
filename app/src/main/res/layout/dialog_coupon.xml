@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:text="🎉 Tebrikler!"
+        android:text="@string/gameDialogTitle"
         android:textSize="22sp"
         android:textStyle="bold"
         android:layout_width="wrap_content"
@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/tvMessage"
-        android:text="Kupon kazandın!"
+        android:text="@string/gameDialogText"
         android:layout_marginTop="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -23,7 +23,7 @@
     <Button
         android:id="@+id/btnOk"
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:text="OK"
+        android:text="@string/gameDialogOK"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
