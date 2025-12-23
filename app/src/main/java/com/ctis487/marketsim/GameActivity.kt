@@ -43,7 +43,7 @@ class GameActivity : AppCompatActivity() {
 
         val gameView = findViewById<GameView>(R.id.gameView)
         findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
-            finish() // MainActivity’ye geri
+            finish() // MainActivity
         }
 
         // BACKGROUND MUSIC

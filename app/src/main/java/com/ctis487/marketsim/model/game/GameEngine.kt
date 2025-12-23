@@ -75,7 +75,7 @@ class GameEngine(private val context: Context) {
                     updateScore()
                 }
 
-                canvas.drawText("Score: $score", 80f, 120f, textPaint)
+                canvas.drawText(context.getString(R.string.score) + score, 80f, 120f, textPaint)
             }
 
             GameState.GAME_OVER -> {
