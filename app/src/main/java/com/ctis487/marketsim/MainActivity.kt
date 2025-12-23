@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -95,7 +96,7 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
 
         binding.buttonProfile.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
+            resultLauncher.launch(intent)
         }
 
         binding.btnGame.setOnClickListener {
@@ -121,5 +122,12 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
     override fun addCart(product: Product) {
         cartViewModel.addToCart(product)
         Toast.makeText(this, "${product.name} added to cart", Toast.LENGTH_SHORT).show()
+    }
+
+    private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            result ->
+        if (result.resultCode == RESULT_OK) {
+            recreate()
+        }
     }
 }

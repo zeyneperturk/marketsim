@@ -37,6 +37,8 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var adapter: CouponAdapter
     private lateinit var couponDao: CouponDAO
 
+    private var langChange = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -139,7 +141,10 @@ class ProfileActivity : AppCompatActivity() {
             iconUrl = ""
         )
     }
+
     override fun onSupportNavigateUp(): Boolean {
+        val intent = Intent()
+        setResult(RESULT_OK, intent)
         finish()
         return true
     }
