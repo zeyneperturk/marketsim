@@ -24,6 +24,12 @@ import com.ctis487.marketsim.worker.CouponWorker
 
 class GameActivity : AppCompatActivity() {
 
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(
+            LocaleHelper.setLocale(newBase, LocaleHelper.getLanguage(newBase))
+        )
+    }
+
     private lateinit var bgPlayer: ExoPlayer
     private lateinit var tapPlayer: ExoPlayer
 
@@ -33,6 +39,7 @@ class GameActivity : AppCompatActivity() {
         enableEdgeToEdge()
 
         setContentView(R.layout.activity_game)
+        GameConstants.initalization(this) // applicationContext değil, this daha iyi
 
         val gameView = findViewById<GameView>(R.id.gameView)
         findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
