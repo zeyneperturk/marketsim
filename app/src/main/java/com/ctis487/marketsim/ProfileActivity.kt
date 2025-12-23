@@ -64,7 +64,7 @@ class ProfileActivity : AppCompatActivity() {
 
 
         couponDao.getAllCoupons().observe(this) { coupons ->
-            adapter.submitList(coupons)
+            adapter.setData(coupons)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

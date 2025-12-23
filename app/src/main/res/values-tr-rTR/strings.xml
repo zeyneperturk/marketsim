@@ -13,7 +13,10 @@
     <string name="addCartBtn">Sepete Ekle</string>
     <string name="cart">Sepet</string>
     <string name="orderTotal">Sepet Tutarı: </string>
+    <string name="orderDiscounted">İndirimli Tutar: </string>
     <string name="useCoupon">Kupon Kullan</string>
+    <string name="chooseCoupon">Kupon Seçiniz</string>
+    <string name="ok">SEÇ</string>
 
     <string name="un">Kullanıcı Adı</string>
     <string name="fn">İsim</string>
@@ -25,6 +28,7 @@
     <string name="lblProfile">Profil</string>
     <string name="changePhoto">Fotoğrafı değiştir</string>
     <string name="coupon">Kuponlar</string>
+    <string name="btn_game">Emir\'in Muhteşem Oyunu</string>
 
     <string name="tap_to_start">Başlamak için dokun</string>
     <string name="game_over">Oyun Bitti</string>

@@ -40,7 +40,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         val currentProduct = product
         if (currentProduct != null) {
             binding.tvGtItemProductName.text = currentProduct.name
-            binding.tvGtItemProductPrice.text = currentProduct.price.toString()
+            binding.tvGtItemProductPrice.text = "$${currentProduct.price}"
             binding.tvGtItemProductDescription.text = currentProduct.description
 
             val imgUrlAddress = Constants.baseUrlForImage + currentProduct.img
