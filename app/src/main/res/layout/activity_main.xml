@@ -28,12 +28,10 @@
         android:textColorHint="@color/rose_soft" />
 
 
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recylerMed"
         android:layout_width="388dp"
-        android:layout_height="540dp"
+        android:layout_height="533dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
@@ -44,10 +42,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         app:layout_constraintVertical_bias="0.0" />
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -69,6 +73,13 @@
             android:textColor="@color/blue_pastel" />
     </LinearLayout>
 
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+
     <Button
         android:id="@+id/btn_game"
         style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -77,5 +88,11 @@
         android:layout_gravity="center_horizontal"
         android:text="Emirin muhtesem oyunu"
         android:textColor="@color/rose_soft" />
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider" />
+
 
 </LinearLayout>

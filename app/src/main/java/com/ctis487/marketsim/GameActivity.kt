@@ -39,7 +39,7 @@ class GameActivity : AppCompatActivity() {
 
         // BACKGROUND MUSIC
         bgPlayer = ExoPlayer.Builder(this)
-            .setHandleAudioBecomingNoisy(false)
+            .setHandleAudioBecomingNoisy(true)
             .build()
 
         val bgItem = MediaItem.fromUri(

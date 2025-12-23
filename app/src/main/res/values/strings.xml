@@ -13,7 +13,10 @@
     <string name="addCartBtn">Add to Cart</string>
     <string name="cart">Cart</string>
     <string name="orderTotal">Order Total: </string>
+    <string name="orderDiscounted">Discounted Total: </string>
     <string name="useCoupon">Use Coupon</string>
+    <string name="chooseCoupon">Choose a Coupon</string>
+    <string name="ok">OK</string>
 
     <string name="un">Username</string>
     <string name="fn">First Name</string>

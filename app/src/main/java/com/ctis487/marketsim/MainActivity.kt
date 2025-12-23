@@ -40,8 +40,6 @@ class MainActivity : AppCompatActivity(),ProductAdapter.RecyclerAdapterInterface
     lateinit var productService: ProductService
     lateinit var productList: MutableList<Product>
 
-    private lateinit var cartDAO: CartDAO
-
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
