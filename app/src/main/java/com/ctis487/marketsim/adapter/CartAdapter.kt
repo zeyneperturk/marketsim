@@ -1,6 +1,8 @@
 package com.ctis487.marketsim.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -43,6 +45,7 @@ class CartAdapter(
         return CartItemViewHolder(binding)
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(myRecyclerViewItemHolder: RecyclerView.ViewHolder, position: Int) {
         Log.d("CartAdapter", "onBindViewHolder called for position $position")
 
@@ -66,6 +69,12 @@ class CartAdapter(
             .load(imgUrlAddress)
             .override(400)
             .into(itemHolder.binding.imgProduct)
+
+
+        if(position % 2 == 0)
+            itemHolder.binding.itemGtLayout.setBackgroundColor(Color.rgb(208, 225, 232))
+        else
+            itemHolder.binding.itemGtLayout.setBackgroundColor(Color.rgb(235, 223, 225))
 
         val quantities = mutableListOf<String>()
         for (i in 1..10) {
@@ -122,7 +131,6 @@ class CartAdapter(
         return recyclerItemValues.size
     }
 
-    // Create that class according to the xml layout file used to UD of items
     inner class CartItemViewHolder(var binding: RecyclerCartBinding) :
         RecyclerView.ViewHolder(binding.root) {
     }
